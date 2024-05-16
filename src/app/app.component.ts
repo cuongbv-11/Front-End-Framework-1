@@ -1,13 +1,36 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core'; //nhúng thư viện
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router'; //nhúng thư viện
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', //meta-data
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormsModule, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
+
+//export class tenComponent
 export class AppComponent {
-  title = 'WD18327';
+  //properties + method: biến, hàm sử dụng trong component
+  count = 0; //khởi tạo biến count = 0
+  //khai báo hàm tăng giá trị của count
+  //tenHam() {} không quy định dữ liệu trả về
+  countClick() {
+    this.count = this.count + 1; //tăng giá trị của count lên 1 đơn vị
+  }
+  //tenHam(): kieuDuLieu {} có quy định dữ liệu trả về
+  countClick2(): void {
+    this.count = this.count + 1; //tăng giá trị của count lên 1 đơn vị
+  }
+
+  title = 2;
+  email = 'cuongbv@fpt.edu.vn';
+
+  info = {
+    name: 'cuongbv',
+    gender: 'male',
+    sdt: '0123456789',
+  };
+  name = 'cuongbv';
 }
