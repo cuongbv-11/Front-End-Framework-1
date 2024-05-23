@@ -8,9 +8,4 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
 })
-export class DetailComponent {
-  constructor(private route: ActivatedRoute) {
-    //lấy giá trị param đã truyền lên url
-    console.log(this.route.snapshot.params['tenParam']);
-  }
-}
+export class DetailComponent {}

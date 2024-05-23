@@ -1,6 +1,7 @@
-import { CanActivateFn } from '@angular/router';
+import { CanDeactivateFn } from '@angular/router';
 
-export const deactivateGuard: CanActivateFn = (route, state) => {
-  alert('ban deo dc roi di');
+export const deactivateGuard: CanDeactivateFn<unknown> = (component, currentRoute, currentState, nextState) => {
+  alert('Bạn ko được rời đi');
+  
   return false;
 };

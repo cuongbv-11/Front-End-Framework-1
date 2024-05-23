@@ -1,39 +1,29 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
-  standalone: true,
-  imports: [RouterLink],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+  styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
-  [x: string]: any;
-  list = [
-    {
-      id: 1,
-      name: 'thaivm2',
-      gender: 'male',
-      sdt: '0123456789',
-    },
-    {
-      id: 2,
-      name: 'thaivm3',
-      gender: 'female',
-      sdt: '0123456789',
-    },
-    {
-      id: 3,
-      name: 'thaivm4',
-      gender: 'female',
-      sdt: '0123456789',
-    },
-    {
-      id: 4,
-      name: 'thaivm4',
-      gender: 'female',
-      sdt: '0123456789',
-    },
-  ];
+export class ListComponent implements OnInit {
+  listProject: any;
+
+  constructor(private cuongbv: HttpClient) {}
+
+  ngOnInit(): void {
+    const apiUrl = 'http://localhost:3000/products';
+    this.cuongbv.get(apiUrl).subscribe((res) => {
+      this.listProject = res;
+    });
+  }
+
+  confirmDelete(id: number): void {
+    const confirmed = confirm('ban co muon xoa khong');
+    if (confirmed) {
+      this.listProject = this.listProject.filter(
+        (project: any) => project.id !== id
+      );
+    }
+  }
 }

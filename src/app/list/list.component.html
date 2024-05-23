@@ -3,24 +3,28 @@
     <tr>
       <th>ID</th>
       <th>Tên</th>
-      <th>Giới tính</th>
-      <th>SĐT</th>
+      <th>price</th>
+      <th>description</th>
+      <th>thumbnail</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    @for(user of list; track user.name) {
+    @for(user of listProject; track user.name) {
     <tr>
       <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.gender }}</td>
-      <td>{{ user.sdt }}</td>
+      <td>{{ user.title }}</td>
+      <td>{{ user.price }}</td>
+      <td>{{ user.description }}</td>
+      <img src="{{ user.thumbnail }}" alt="{{ user.title }}" />
       <td>
         <button class="btn btn-outline-warning">
-          <a [routerLink]="['/detail', user.id]">Detail</a>
+          <a>Detail</a>
         </button>
         <button class="btn btn-outline-primary"><a href="">Edit</a></button>
-        <button class="btn btn-outline-danger"><a href="">Delete</a></button>
+        <button class="btn btn-outline-danger" (click)="confirmDelete(user.id)">
+          Delete
+        </button>
       </td>
     </tr>
     }
